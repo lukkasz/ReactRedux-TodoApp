@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
-import Todo from 'Todo';
+import {connect} from 'react-redux';
 
-export default class TodoList extends Component {
-  constructor(props) {
-    super(props);
+import Todo from 'Todo';
+import TodoAPI from 'TodoAPI';
+
+
+class TodoList extends Component {
+  constructor() {
+    super();
   }
   
   render() {
-    const {todos} = this.props; 
+    const {todos, showCompleted, searchText} = this.props;
+    const filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
     const renderTodos = () => {
       
       if (todos.length === 0) {
         return (<p className="todo-container__message">Nothing To Do</p>);
       }
       
-      return todos.map((todo) => {
+      return filteredTodos.map((todo) => {
           return (
-            <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/>  
+            <Todo key={todo.id} {...todo} />  
           )
       })
       
@@ -28,3 +33,9 @@ export default class TodoList extends Component {
     )
   }
 }
+
+export default connect(
+  (state) => {      
+    return state;
+  }
+)(TodoList);

@@ -11,11 +11,6 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    })
-  ],
   module: {
     loaders: [{
       loader: 'babel-loader',
@@ -39,7 +34,10 @@ module.exports = {
       './src/api'
     ],
     alias: {
-      applicationStyles: 'src/style/style.scss'
+      applicationStyles: 'src/style/style.scss',
+      actions: 'src/actions/actions.jsx',
+      reducers: 'src/reducers/reducers.jsx',
+      configureStore: 'src/store/configureStore.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },

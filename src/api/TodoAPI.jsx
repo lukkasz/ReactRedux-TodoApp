@@ -25,7 +25,7 @@ export default {
   
   filterTodos(todos, showCompleted, searchText) {
     let filterTodos = todos;
-    
+    console.log("SearchText form filterTodos API", searchText);
     // Filter by showCompleted
     filterTodos = filterTodos.filter((todo) => {
       return !todo.completed || showCompleted;

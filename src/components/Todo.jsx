@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import * as actions from 'actions';
 import moment from 'moment';
 
-export default class Todo extends Component {
-  constructor(props) {
-    super(props);
+class Todo extends Component {
+  constructor() {
+    super();
     this.handleClick = this.handleClick.bind(this);
   }
   
   handleClick() {
-    this.props.onToggle(this.props.id);
+    this.props.dispatch(actions.toggleTodo(this.props.id));
   }
+  
   render() {
-    const {text, completed, createdAt, completedAt} = this.props;
+    const {text, completed, createdAt, completedAt, dispatch} = this.props;
     const todoClassName = completed ? 'todo todo--completed' : 'todo';
     const renderDate = () => {
       let message = 'Created '
@@ -23,6 +26,7 @@ export default class Todo extends Component {
       }
       
       return message + moment.unix(timeStamp).format('MMM DD, YY @ HH:mm');
+      
     }
     return (
       <div className={todoClassName} onClick={this.handleClick}>
@@ -37,3 +41,5 @@ export default class Todo extends Component {
     )
   }
 }
+
+export default connect()(Todo); // by this we have access to dispatch as props of our compnent
