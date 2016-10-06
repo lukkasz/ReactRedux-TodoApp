@@ -10,20 +10,14 @@ class AddTodo extends Component {
   }
   
   onFromSubmit(e) {
-    
     e.preventDefault();
-    
     const todoText = this.refs.todoText.value;
     
     if (todoText.length > 0) {
-    
       this.refs.todoText.value = '';
       this.props.dispatch(actions.addTodo(todoText));
-    
     } else {
-      
       this.refs.todoText.focus();
-    
     }
     
   }
@@ -43,5 +37,6 @@ class AddTodo extends Component {
     )
   }
 }
+
 
 export default connect()(AddTodo);

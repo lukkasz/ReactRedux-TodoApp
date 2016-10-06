@@ -12,19 +12,12 @@ const store = configureStore.configure();
 
 store.subscribe(()=>{
   const state = store.getState();
-  console.log("new state", state);
+  //console.log("new state", state);
   TodoAPI.setTodos(state.todos);
 });
 
 const initialTodos = TodoAPI.getTodos();
-console.log("Init todos: ", initialTodos );
 store.dispatch(actions.addTodos(initialTodos));
-
-// store.dispatch(actions.addTodo('Clean house'));
-//store.dispatch(actions.setSearchText('house'));
-// store.dispatch(actions.toggleShowCompleted());
-
-
 
 
 //Load bootstrap css
