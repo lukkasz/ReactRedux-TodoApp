@@ -1,7 +1,7 @@
 {
-  "name": "react-starter-boilerplate",
+  "name": "react-redux-todoapp",
   "version": "1.0.0",
-  "description": "React boilerplate",
+  "description": "React-redux TodoApp",
   "main": "index.js",
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",

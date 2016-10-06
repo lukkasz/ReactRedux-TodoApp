@@ -1,2 +1,2 @@
-# React TODO App
+# React-Redux TODO App
 
